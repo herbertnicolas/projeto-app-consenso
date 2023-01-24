@@ -9,35 +9,44 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.consenso.model.TipoUsuario;
 import com.app.consenso.model.Usuario;
 import com.app.consenso.service.UsuarioService;
 
 @RestController
 public class UsuarioController {
     @PostMapping("/usuarios")
-    public Usuario criarNovoUsuario(@RequestBody Usuario usuario){
-        return usuarioService.save(usuario);
+    public TipoUsuario criarNovoUsuario(@RequestBody Usuario usuario) {
+        // retornar tipo de usuario aqui
+        usuarioService.save(usuario);
+        return usuario.getTipoUsuario();
     }
 
     @GetMapping("/usuarios")
-    public Iterable<Usuario> obterTodosUsuario(){
+    public Iterable<Usuario> obterTodosUsuario() {
         return usuarioService.findAll();
     }
 
-    @PutMapping("/usuarios/{id}")
-    public Usuario atualizaUsuario(@RequestBody Usuario usuario){
+    @GetMapping("/usuarios/{id}")
+    public Usuario obterUsuarioPorId(@PathVariable("id") Integer id){
+        return usuarioService.findById(id).get();
+    }
+
+    @PutMapping("/usuarios")
+    public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
         Usuario usuarioAtt = usuarioService.findById(usuario.getIdUsuario()).get();
         usuarioAtt.setNome(usuario.getNome());
         usuarioAtt.setSobrenome(usuario.getSobrenome());
         usuarioAtt.setEmail(usuario.getEmail());
         usuarioAtt.setSenha(usuario.getSenha());
+        usuarioAtt.setTipoUsuario(usuario.getTipoUsuario());
         usuarioService.save(usuarioAtt);
 
         return usuarioAtt;
     }
 
     @DeleteMapping("/usuarios/{id}")
-    public String removeUsuarioPorId(@PathVariable("id") Integer id){
+    public String removeUsuarioPorId(@PathVariable("id") Integer id) {
         usuarioService.deleteById(id);
         return "Contato removido com sucesso!";
     }
@@ -45,6 +54,3 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 }
-
-
-

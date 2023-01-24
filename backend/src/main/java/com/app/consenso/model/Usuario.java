@@ -19,7 +19,9 @@ public class Usuario {
     private String sobrenome;
     private String email;
     private String senha;
-    private int idTipoUsuario;
-
+ 
+    @OneToOne
+    private TipoUsuario tipoUsuario;
+    
 }
 // @OneToOne

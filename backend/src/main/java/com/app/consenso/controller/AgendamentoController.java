@@ -24,6 +24,13 @@ public class AgendamentoController {
         return agendamentoService.findAll();
     } 
 
+    @GetMapping("/agendamentos/{id}")
+    public Agendamento oterAgendamentoPorId(@PathVariable("id") Integer id){
+        return agendamentoService.findById(id).get();
+    }
+
+    // @GetMapping("/agendamentos/{id}")
+
     @PutMapping("/agendamentos/{id}")
     public Agendamento atualizaAgendamento(@RequestBody Agendamento agendamento){
         Agendamento agendamentoAtt = agendamentoService.findById(agendamento.getIdAgendamento()).get();

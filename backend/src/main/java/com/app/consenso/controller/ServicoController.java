@@ -24,6 +24,10 @@ public class ServicoController {
         return servicoService.findAll();
     }
 
+    @GetMapping("/servicos/{id}")
+    public Servico oterServicoPorId(@PathVariable("id") Integer id){
+        return servicoService.findById(id).get();
+    }
     @PutMapping("/servicos/{id}")
     public Servico atualizaServico(@RequestBody Servico servico){
         Servico servicoAtt = servicoService.findById(servico.getIdServico()).get();
