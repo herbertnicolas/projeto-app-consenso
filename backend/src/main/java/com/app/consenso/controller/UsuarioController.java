@@ -32,6 +32,7 @@ public class UsuarioController {
         return usuarioService.findById(id).get();
     }
 
+    //no put, deve ser passado o atributo "idUsuario" para referenciar o usuario a ser atualizado
     @PutMapping("/usuarios")
     public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
         Usuario usuarioAtt = usuarioService.findById(usuario.getIdUsuario()).get();

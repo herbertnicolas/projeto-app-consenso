@@ -31,7 +31,7 @@ public class AgendamentoController {
 
     // @GetMapping("/agendamentos/{id}")
 
-    @PutMapping("/agendamentos/{id}")
+    @PutMapping("/agendamentos")
     public Agendamento atualizaAgendamento(@RequestBody Agendamento agendamento){
         Agendamento agendamentoAtt = agendamentoService.findById(agendamento.getIdAgendamento()).get();
         agendamentoAtt.setData(agendamento.getData());
