@@ -10,13 +10,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.consenso.model.Agendamento;
+import com.app.consenso.model.Usuario;
 import com.app.consenso.service.AgendamentoService;
+import com.app.consenso.service.UsuarioService;
 
 @RestController
 public class AgendamentoController {
     @PostMapping("/agendamentos")
-    public Agendamento criarNovoAgendamento(@RequestBody Agendamento a){
-        return agendamentoService.save(a);
+    public Object criarNovoAgendamento(@RequestBody Agendamento a){ //retornando Object que é a raiz da hierarquia de classes
+        //cliente -> agendamento ; prestador -> serviço
+        Usuario user = new Usuario();
+        user = usuarioService.findById(user.getIdUsuario()).get();
+
+        if(user.getTipoUsuario().getNome().equalsIgnoreCase("Cliente")){
+            return agendamentoService.save(a);
+        }else {
+            return "Tipo de usuario não compatível com método";  //retorno de String possibilitado pelo class Object
+        }
     }
 
     @GetMapping("/agendamentos")
@@ -49,4 +59,5 @@ public class AgendamentoController {
 
     @Autowired
     private AgendamentoService agendamentoService;
+    private UsuarioService usuarioService;
 }

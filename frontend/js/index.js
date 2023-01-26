@@ -1,13 +1,15 @@
-const url = "https://08da-2804-7f7-d584-4c52-2542-50fb-287e-7bdc.sa.ngrok.io"
+const url = "localhost:8080/usuarios"
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault()
-})
+// form.addEventListener("submit", (e) => {
+//     e.preventDefault()
+// })
+console.log("TESTE")
 
-function sendToBack() {
-    console.log("TESTE")
-    fetch(url)
+fetch(url)
         .then((res) => res.json())
         .then((data) => console.log(data))
         .catch((error) => console.log("ERROR"));
+
+function sendToBack() {
+    
 }

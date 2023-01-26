@@ -10,13 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.consenso.model.Servico;
+import com.app.consenso.model.Usuario;
 import com.app.consenso.service.ServicoService;
+import com.app.consenso.service.UsuarioService;
 
 @RestController
 public class ServicoController {
     @PostMapping("/servicos")
-    public Servico criarNovoServico(@RequestBody Servico servico){
-        return servicoService.save(servico);
+    public Object criarNovoServico(@RequestBody Servico servico){
+        Usuario user = new Usuario();
+        if(user.getTipoUsuario().getNome().equalsIgnoreCase("Prestador")){
+            return servicoService.save(servico);
+        }else{
+            return "Tipo de usuario nao compatível com método";
+        }   
     }
 
     @GetMapping("/servicos")
@@ -45,4 +52,5 @@ public class ServicoController {
     }
     @Autowired
     private ServicoService servicoService;
+    private UsuarioService usuarioService;
 }
