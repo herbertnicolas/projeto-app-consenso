@@ -26,7 +26,7 @@ public class Agendamento {
         
     // }
     @OneToOne
-    public Servico servico;
+    private Servico servico;
     @OneToOne
-    public Usuario usuario;
+    private Usuario usuario;
 }

@@ -17,8 +17,8 @@ public class Servico {
     private String descricao;
     
     @OneToOne
-    public Usuario usuario;
+    private Usuario usuario;
 
-    @OneToOne
-    public Agendamento agendamento;
+    // @OneToOne
+    // public Agendamento agendamento;
 }
