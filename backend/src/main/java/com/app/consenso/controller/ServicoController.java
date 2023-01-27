@@ -1,6 +1,7 @@
 package com.app.consenso.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import com.app.consenso.model.Servico;
 import com.app.consenso.model.Usuario;
 import com.app.consenso.service.ServicoService;
 import com.app.consenso.service.UsuarioService;
-
+@CrossOrigin(origins = "*")
 @RestController
 public class ServicoController {
     @PostMapping("/servicos")
