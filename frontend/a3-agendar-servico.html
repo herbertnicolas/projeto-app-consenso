@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-Br">
 
 <head>
     <meta charset="UTF-8">
@@ -23,8 +23,8 @@
 
                 <nav class="ms-auto ">
                     <ul class="header-ul">
-                        <a href="#" class="header-nav-a1 active ">Agendar Serviços</a>
-                        <a href="#" class="header-nav-a2 noactive">Meus Agendamentos</a>
+                        <a href="a3-agendar-servico.html" class="header-nav-a1 active ">Agendar Serviços</a>
+                        <a href="a4-meus-servicos.html" class="header-nav-a2 noactive">Meus Agendamentos</a>
                     </ul>
                 </nav>
             </div>
@@ -33,41 +33,35 @@
 
     <div class="container container-main">
         <h2></h2>
-        <div class="container row " id="div">
 
-            <div class="col-12 div-select">
-                <p class="p">Selecione o Serviço:</p>
-                <select class="form-select select-bar" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-            </div>
+        <form>
+            <div class="container row " id="div">
+                <div class="col-12 div-select">
+                    <p class="p">Selecione o Serviço:</p>
+                    <select class="form-select botao-bar" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
 
-            <div class="col-8 div-select">
-                <p class="p">Data:</p>
-                <select class="form-select select-bar" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-            </div>
-            <div class="col-4 div-select">
-                <p class="p">Hora:</p>
-                <select class="form-select select-bar" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select> 
-            </div>
-            <div class="div-botao-a3" id="botao">
-                <button class="w-100 btn btn-lg btn-primary botao-a3" id="btnSubmit" type="submit">AGENDAR</button>
+                <div class="col-7 div-data">
+                    <p class="p-data">Data:</p>
+                    <input class = "data"type="date">
+                </div>
+                <div class="col-5 div-hora">
+                    <p class="p">Hora:</p>
+                    <input class="botao-bar text-center" type="time" name="" id="">
+                </div>
+                <div class="div-botao-a3" id="botao">
+                    <button onclick="agendarServico()" class="w-100 btn btn-lg btn-primary botao-a3" id="btnSubmit" type="submit">AGENDAR</button>
+                </div>
+
             </div>
 
-        </div>
+        </form>
+
     </div>
 
 
