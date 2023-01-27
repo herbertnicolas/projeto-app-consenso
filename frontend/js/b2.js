@@ -11,29 +11,26 @@ const divSenha2 = document.getElementById("div-senha2")
 const divBotao = document.getElementById("botao")
 
 
-form.addEventListener("submit",async (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
     // const nome = document.getElementById("inputNome").value;
     // const desc = document.getElementById("desc").value;
-    
-    const rawResponse = await fetch(`http://localhost:8080/usuarios`, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-      });
-      const data = await rawResponse.json();
-      console.log(data);
-    // }).then((res) => {
-    //         console.log(res)
 
-    //         // localStorage.setItem("idUsuario", data.idUsuario)
-    //         // const idUsuario = localStorage.setItem("idUsuario")
+    await fetch("http://localhost:8080/usuarios",{
+            method: 'GET',
+            headers:{
+                    'Content-Type': 'application/json', 
+            }
+            // body: JSON.stringify({ nome: nome, descricao: desc})
+    }).then((res) => {
+            console.log(res)
 
-    //         //redirecting to homepage
-    //         // window.location.href("index.html")
-    // }).catch((erro) => {console.error(erro)})
+            // localStorage.setItem("idUsuario", data.idUsuario)
+            // const idUsuario = localStorage.setItem("idUsuario")
+
+            //redirecting to homepage
+            // window.location.href("index.html")
+    }).catch((erro) => {console.error(erro)})
 })
 
 form.addEventListener("submit", (e) => {
@@ -101,8 +98,8 @@ function validarEntradas(n, e, s, s2) {
         var conteudoNovo = document.createTextNode("Cadastro realizado com sucesso")
         p.appendChild(conteudoNovo)
         h.className = "alert alert-success bordas"
-        
-        
+
+
         h.appendChild(p)
         divBotao.appendChild(h)
     }
@@ -114,8 +111,8 @@ function validarEmail(ev) {
 }
 
 // validacao de senha inconsistente quanto a limite de caracteres / empilhando mensagens de erro
-function validarSenha(es) {
-    let rs = /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+// function validarSenha(es) {
+//     let rs = /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
 
     return rs.test(es)
 
