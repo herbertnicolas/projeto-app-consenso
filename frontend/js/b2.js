@@ -15,22 +15,25 @@ form.addEventListener("submit",async (e) => {
     e.preventDefault();
     // const nome = document.getElementById("inputNome").value;
     // const desc = document.getElementById("desc").value;
+    
+    const rawResponse = await fetch(`http://localhost:8080/usuarios`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      });
+      const data = await rawResponse.json();
+      console.log(data);
+    // }).then((res) => {
+    //         console.log(res)
 
-    await fetch("http://localhost:8080/usuarios",{
-            method: 'GET',
-            headers:{
-                    'Content-Type': 'application/json', 
-            }
-            // body: JSON.stringify({ nome: nome, descricao: desc})
-    }).then((res) => {
-            console.log(res)
+    //         // localStorage.setItem("idUsuario", data.idUsuario)
+    //         // const idUsuario = localStorage.setItem("idUsuario")
 
-            // localStorage.setItem("idUsuario", data.idUsuario)
-            // const idUsuario = localStorage.setItem("idUsuario")
-
-            //redirecting to homepage
-            // window.location.href("index.html")
-    }).catch((erro) => {console.error(erro)})
+    //         //redirecting to homepage
+    //         // window.location.href("index.html")
+    // }).catch((erro) => {console.error(erro)})
 })
 
 form.addEventListener("submit", (e) => {
@@ -111,9 +114,9 @@ function validarEmail(ev) {
 }
 
 // validacao de senha inconsistente quanto a limite de caracteres / empilhando mensagens de erro
-// function validarSenha(es) {
-//     let rs = /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+function validarSenha(es) {
+    let rs = /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
 
-//     return rs.test(es)
+    return rs.test(es)
 
-// }
+}
