@@ -1,88 +1,99 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const div1 = document.getElementById("div-p")
+    const prestador = "heberto"
+    const data = "23/10/2023"
+    const hora = "20:20"
+
     const i = 1
-
-    // const array = [1, 2, 3]
-
-    // array.map((elemento, index) => {
-    //     return (<h1 key={index}>{elemento}</h1>)
-    // })
 
 
     if (i == 1) {
-        
-
-
-    //paragrafo ---Instalação--- 
-        const divNew = document.createElement("div")
-        const paragrafo1 = document.createElement("p")
-        const strong1 = document.createElement("strong")
-        const a1 = document.createElement("a")
-        const img1 = document.createElement("img")
-        const texto1 = document.createTextNode("Instalação")
-        const a2 = document.createElement("a")
-        const img2 = document.createElement("img")
-
-
-    //paragrafo ---Prestador---
-        const paragrafo3 = document.createElement("p")
-        const strong3 = document.createElement("strong")
-        const texto3 = document.createTextNode("Prestador:" + "")
-
-
-
-        //logica --- paragrafo1 ---
-        divNew.className = "alert alert-success div-agendamento"
-        a1.href = "index.html"
-        strong1.className = "a1"
-        img1.className = "a1-img"
-        img1.src = "img/edit_square_FILL0_wght400_GRAD0_opsz48.png"
-        img2.className = "a2-img"
-        img2.src = "img/delete_FILL0_wght400_GRAD0_opsz48.png"
-
-        strong1.appendChild(texto1)
-        a1.appendChild(img1)
-        a1.appendChild(img2)
-        paragrafo1.appendChild(strong1)
-        paragrafo1.appendChild(a1)
-        divNew.appendChild(paragrafo1)
-
-
-
-
-        //    paragrafro ---istalação---
-        document.getElementById("agenda").appendChild(divNew)
-
+        creatDiv(prestador,data,hora)
+        creatDiv(prestador, data, hora)
     }
 
-
-    // adicionando o background dos meus agendamentos
-    // function adicionandoBg(c,d,h,){
-
-    //     const client = c
-    //     const data = d
-    //     const hora = h
-
-    //     const j = document.createElement("div")
-    //     const p = document.createElement("p")
-    //     const s = document.createElement("strong")
-    //     const a = document.createElement("a")
-    //     const i = document.createElement("img")
-    //     const t = document.createTextNode("Instalação")
-
-    //     j.className = "alert alert-success div-agendamento"
-    //     a.href = "index.html"
-    //     i.className = "a1-img"
-    //     i.src = "img/edit_square_FILL0_wght400_GRAD0_opsz48.png"
-
-    //     s.appendChild(t)
-    //     a.appendChild(i)
-    //     p.appendChild(s)
-    //     p.appendChild(a)
-    //     j.appendChild(p)
-
-
-
-
-    // }   
 })
+
+function creatDiv(prestador,dia,hora) {
+
+    //criando paragrafo  ---paragrafo 1 (Instalação)--- 
+    const divNew = document.createElement("div")
+    const paragrafo1 = document.createElement("p")
+    const strong1 = document.createElement("strong")
+    const a1 = document.createElement("a")
+    const img1 = document.createElement("img")
+    const texto1 = document.createTextNode("Instalação")
+    const a2 = document.createElement("a")
+    const img2 = document.createElement("img")
+
+
+    //criando paragrafo ---paragrafo 2 (Prestador)---
+    const paragrafo3 = document.createElement("p")
+    const strong3 = document.createElement("strong")
+    const texto3 = document.createTextNode("Prestador: ")
+    const textoprestador = document.createTextNode(prestador)
+
+
+    //criando paragrafo --- paragrafo 3 (dia)---
+    const paragrafo4 = document.createElement("p")
+    const strong4 = document.createElement("strong")
+    const texto4 = document.createTextNode("Dia: ")
+    const textodia = document.createTextNode(dia)
+
+    //criando paragrafo --- paragrafo 3 (dia)---
+    const paragrafo5 = document.createElement("p")
+    const strong5 = document.createElement("strong")
+    const texto5 = document.createTextNode("Hora: ")
+    const textohora = document.createTextNode(hora)
+
+
+
+    //logica --- paragrafo1 (Instalação) ---
+    divNew.className = "alert alert-success div-agendamento"
+    a1.href = "index.html"
+    strong1.className = "a1"
+    img1.className = "a1-img"
+    img1.src = "img/edit_square_FILL0_wght400_GRAD0_opsz48.png"
+    img2.className = "a2-img"
+    img2.src = "img/delete_FILL0_wght400_GRAD0_opsz48.png"
+    paragrafo1.className = "p-a4"
+    paragrafo3.className = "p-a4"
+    paragrafo4.className = "p-a4"
+    paragrafo5.className = "p-a4"
+
+    //logica --- paragrafo2 (prestador)---
+    strong3.appendChild(texto3)
+    paragrafo3.appendChild(strong3)
+    paragrafo3.appendChild(textoprestador)
+
+    //paragrafo --- paragrafo 3 (dia)---
+    strong4.appendChild(texto4)
+    paragrafo4.appendChild(strong4)
+    paragrafo4.appendChild(textodia)
+
+    //paragrafo --- paragrafo 4 (hora)---
+    strong5.appendChild(texto5)
+    paragrafo5.appendChild(strong5)
+    paragrafo5.appendChild(textohora)
+
+    //appende ---instalação---
+    strong1.appendChild(texto1)
+    a1.appendChild(img1)
+    a1.appendChild(img2)
+    paragrafo1.appendChild(strong1)
+    paragrafo1.appendChild(a1)
+
+
+
+
+    //append ---div---
+    divNew.appendChild(paragrafo1)
+    divNew.appendChild(paragrafo3)
+    divNew.appendChild(paragrafo4)
+    divNew.appendChild(paragrafo5)
+
+
+
+
+    //    paragrafro ---istalação---
+    document.getElementById("div-p").appendChild(divNew)
+}
