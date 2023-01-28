@@ -1,7 +1,7 @@
 package com.app.consenso.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.consenso.model.TipoUsuario;
 import com.app.consenso.service.TipoUsuarioService;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class TipoUsuarioController {
     @PostMapping("/tipoUsuario")
-    public TipoUsuario criaNovoTipoUsuario(@RequestBody TipoUsuario tipoUsuario){
-        return tipoUsuarioService.save(tipoUsuario);
+    public Object criaNovoTipoUsuario(@RequestBody TipoUsuario tipoUsuario){
+        if(tipoUsuario.getNome().equalsIgnoreCase("cliente") || tipoUsuario.getNome().equalsIgnoreCase("prestador")) return tipoUsuarioService.save(tipoUsuario);
+        else return "Tipo de usuário não permitido";
     }
 
     @GetMapping("/tipoUsuario")

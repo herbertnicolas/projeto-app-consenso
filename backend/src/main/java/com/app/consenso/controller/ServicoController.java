@@ -19,11 +19,12 @@ import com.app.consenso.service.UsuarioService;
 public class ServicoController {
     @PostMapping("/servicos")
     public Object criarNovoServico(@RequestBody Servico servico){
-        Usuario user = new Usuario();
-        if(user.getTipoUsuario().getNome().equalsIgnoreCase("Prestador")){
+        Usuario user  = usuarioService.findById(servico.getUsuario().getIdUsuario()).get();
+       
+        if(user.getTipoUsuario().getNome().equalsIgnoreCase("prestador")){
             return servicoService.save(servico);
         }else{
-            return "Tipo de usuario nao compatível com método";
+            return "Tipo de usuario não compatível com método";
         }   
     }
 

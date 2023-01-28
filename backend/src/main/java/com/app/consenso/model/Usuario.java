@@ -16,6 +16,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int idUsuario;
+    @NotNull //nome nao pode ser um campo vazio
     private String nome;
     private String sobrenome;
     private String email;
