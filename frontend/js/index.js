@@ -2,18 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const prestador = "heberto"
     const data = "23/10/2023"
     const hora = "20:20"
+    const id1 = "1"
+    const id2 = "2"
 
     const i = 1
 
 
     if (i == 1) {
-        creatDiv(prestador,data,hora)
-        creatDiv(prestador, data, hora)
+        creatDiv(prestador,data,hora,id1)
+        creatDiv(prestador, data, hora,id2)
     }
 
 })
 
-function creatDiv(prestador,dia,hora) {
+function creatDiv(prestador,dia,hora,id) {
 
     //criando paragrafo  ---paragrafo 1 (Instalação)--- 
     const divNew = document.createElement("div")
@@ -59,7 +61,8 @@ function creatDiv(prestador,dia,hora) {
     paragrafo3.className = "p-a4"
     paragrafo4.className = "p-a4"
     paragrafo5.className = "p-a4"
-
+    divNew.id = id
+ 
     //logica --- paragrafo2 (prestador)---
     strong3.appendChild(texto3)
     paragrafo3.appendChild(strong3)

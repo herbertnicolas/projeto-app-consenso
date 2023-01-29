@@ -11,45 +11,18 @@ const divSenha2 = document.getElementById("div-senha2")
 const divBotao = document.getElementById("botao")
 
 
-form.addEventListener("submit",async (e) => {
-    e.preventDefault();
-    // const nome = document.getElementById("inputNome").value;
-    // const desc = document.getElementById("desc").value;
-    
-    const rawResponse = await fetch(`http://localhost:8080/usuarios`, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-      });
-      const data = await rawResponse.json();
-      console.log(data);
-    // }).then((res) => {
-    //         console.log(res)
-
-    //         // localStorage.setItem("idUsuario", data.idUsuario)
-    //         // const idUsuario = localStorage.setItem("idUsuario")
-
-    //         //redirecting to homepage
-    //         // window.location.href("index.html")
-    // }).catch((erro) => {console.error(erro)})
-})
-
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     validarEntradas(nome, email, senha, senha2)
 })
 
-//nome: teste
-//email: teste@teste.com
-//senha: Wabcde123#
 
 function validarEntradas(n, e, s, s2) {
     const nomeValue = String(n.value)
     const emailValue = String(e.value)
     const senhaValue = String(s.value)
     const senha2Value = String(s2.value)
+
 
 
     if (nomeValue === "" || nomeValue == null) {
@@ -101,11 +74,39 @@ function validarEntradas(n, e, s, s2) {
         var conteudoNovo = document.createTextNode("Cadastro realizado com sucesso")
         p.appendChild(conteudoNovo)
         h.className = "alert alert-success bordas"
-        
-        
+
+
         h.appendChild(p)
         divBotao.appendChild(h)
+
+
+        mandarServidor(nomeValue,emailValue,senhaValue)
+
     }
+}
+
+function mandarServidor(n, e, s) {
+
+
+    fetch("http://localhost:8080/usuarios", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nome: n,
+                email: e,
+                senha: s,
+                tipoUsuario:"1"
+            }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Success:", data);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
 }
 
 function validarEmail(ev) {
