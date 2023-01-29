@@ -19,7 +19,7 @@ import com.app.consenso.service.UsuarioService;
 public class UsuarioController {
     @PostMapping("/usuarios")
     public TipoUsuario criarNovoUsuario(@RequestBody Usuario usuario) {
-        // retornar tipo de usuario aqui
+        // aqui deve ser feito uma verificaçao se o tipo do usuario é correto, já que vai ser a primeira entidade a ser preenchida
         usuarioService.save(usuario);
         return usuario.getTipoUsuario();
     }

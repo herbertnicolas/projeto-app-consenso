@@ -22,9 +22,9 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int idAgendamento;
-    @NonNull
+    // @NonNull
     private LocalDate data;
-    @NonNull
+    // @NonNull
     private LocalTime hora;
 
     // @Query("SELECT a FROM Agendamento nickname WHERE ")

@@ -1,5 +1,6 @@
 package com.app.consenso.model;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int idServico;
+    //usuario pode criar servico sem descricao, mas nao sem um nome
     private String nome;
     private String descricao;
     

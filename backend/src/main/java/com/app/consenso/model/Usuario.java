@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 @Entity
@@ -16,7 +17,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int idUsuario;
-    @NotNull //nome nao pode ser um campo vazio
     private String nome;
     private String sobrenome;
     private String email;

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.consenso.model.TipoUsuario;
 import com.app.consenso.service.TipoUsuarioService;
 
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin(origins = "*")
 public class TipoUsuarioController {
     @PostMapping("/tipoUsuario")
     public Object criaNovoTipoUsuario(@RequestBody TipoUsuario tipoUsuario){
