@@ -24,6 +24,7 @@ function validarEntradas(n, e, s, s2) {
     const senha2Value = String(s2.value)
 
 
+
     if (nomeValue === "" || nomeValue == null) {
         nome.className = "form-control is-invalid"
         var conteudoNovo = document.createTextNode("O nome é invalido!");
@@ -77,9 +78,6 @@ function validarEntradas(n, e, s, s2) {
 
         h.appendChild(p)
         divBotao.appendChild(h)
-
-        mandarServidor(nomeValue,emailValue,senhaValue)
-
     }
 }
 
@@ -94,7 +92,8 @@ function mandarServidor(n, e, s) {
             body: JSON.stringify({
                 nome: n,
                 email: e,
-                senha: s
+                senha: s,
+                tipoUsuario:"1"
             }),
         })
         .then((response) => response.json())
