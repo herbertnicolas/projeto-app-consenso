@@ -11,7 +11,7 @@ const divSenha2 = document.getElementById("div-senha2")
 const divBotao = document.getElementById("botao")
 
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault()
     validarEntradas(nome, email, senha, senha2)
 })
@@ -97,7 +97,6 @@ function mandarServidor(n, e, s) {
                 nome: n,
                 email: e,
                 senha: s,
-                tipoUsuario:"1"
             }),
         })
         .then((response) => response.json())
