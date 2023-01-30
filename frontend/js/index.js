@@ -15,6 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
+function mandarServidor(tipo_do_usuario) {
+    // console.log("ENTROU")
+    fetch("http://localhost:8080/tipoUsuario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nome: tipo_do_usuario
+            }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Success:", data);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+
 function creatDiv(prestador,dia,hora,id) {
 
     //criando paragrafo  ---paragrafo 1 (Instalação)--- 
@@ -51,12 +71,12 @@ function creatDiv(prestador,dia,hora,id) {
 
     //logica --- paragrafo1 (Instalação) ---
     divNew.className = "alert alert-success div-agendamento"
-    a1.href = "index.html"
+    a1.href = "../index.html"
     strong1.className = "a1"
     img1.className = "a1-img"
-    img1.src = "img/edit_square_FILL0_wght400_GRAD0_opsz48.png"
+    img1.src = "../img/edit_square_FILL0_wght400_GRAD0_opsz48.png"
     img2.className = "a2-img"
-    img2.src = "img/delete_FILL0_wght400_GRAD0_opsz48.png"
+    img2.src = "../img/delete_FILL0_wght400_GRAD0_opsz48.png"
     paragrafo1.className = "p-a4"
     paragrafo3.className = "p-a4"
     paragrafo4.className = "p-a4"
