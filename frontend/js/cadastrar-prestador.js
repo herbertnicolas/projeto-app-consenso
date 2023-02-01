@@ -31,7 +31,9 @@ function mandarServidor(n, e, s) {
                 nome: n,
                 email: e,
                 senha: s,
-                tipoUsuario:"1"
+                tipoUsuario:{
+                    idTipoUsuario: 2
+                } 
             }),
         })
         .then((response) => response.json())
@@ -103,6 +105,9 @@ function validarEntradas(n, e, s, s2) {
         
         h.appendChild(p)
         divBotao.appendChild(h)
+
+        mandarServidor(nomeValue, emailValue, senhaValue)
+        window.location.replace("http://127.0.0.1:5500/frontend/index.html")
     }
 }
 

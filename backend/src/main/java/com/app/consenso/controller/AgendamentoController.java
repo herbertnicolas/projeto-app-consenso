@@ -20,12 +20,12 @@ import com.app.consenso.service.UsuarioService;
 @RestController
 public class AgendamentoController {
     @PostMapping("/agendamentos")
-    public Object criarNovoAgendamento(@RequestBody Agendamento a){ //retornando Object que é a raiz da hierarquia de classes
+    public Object criarNovoAgendamento(@RequestBody Agendamento agendamento){ //retornando Object que é a raiz da hierarquia de classes
         //cliente -> agendamento ; prestador -> serviço
-        Usuario user  = usuarioService.findById(a.getUsuario().getIdUsuario()).get();
+        Usuario user  = usuarioService.findById(agendamento.getUsuario().getIdUsuario()).get();
 
-        if(user.getTipoUsuario().getNome().equalsIgnoreCase("cliente")){
-            return agendamentoService.save(a);
+        if(user.getTipoUsuario().getIdTipoUsuario() == 1){
+            return agendamentoService.save(agendamento); 
         }else {
             return "Tipo de usuario não compatível com método";  //retorno de String possibilitado pelo class Object
         }
@@ -37,7 +37,7 @@ public class AgendamentoController {
     } 
 
     @GetMapping("/agendamentos/{id}")
-    public Agendamento oterAgendamentoPorId(@PathVariable("id") Integer id){
+    public Agendamento obterAgendamentoPorId(@PathVariable("id") Integer id){
         return agendamentoService.findById(id).get();
     }
 

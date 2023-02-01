@@ -20,8 +20,8 @@ public class ServicoController {
     @PostMapping("/servicos")
     public Object criarNovoServico(@RequestBody Servico servico){
         Usuario user  = usuarioService.findById(servico.getUsuario().getIdUsuario()).get();
-       
-        if(user.getTipoUsuario().getNome().equalsIgnoreCase("prestador")){
+       //prestador = 2
+        if(user.getTipoUsuario().getIdTipoUsuario() == 2){
             return servicoService.save(servico);
         }else{
             return "Tipo de usuario não compatível com método";
@@ -54,5 +54,6 @@ public class ServicoController {
     }
     @Autowired
     private ServicoService servicoService;
+    @Autowired
     private UsuarioService usuarioService;
 }
